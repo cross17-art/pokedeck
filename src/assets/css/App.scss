@@ -1,0 +1,82 @@
+@use "sass:list";
+@import "./reset.scss";
+@import "./normalize.scss";
+@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap");
+@import "_mixins";
+@import "_vars";
+@import "./popup.scss";
+@import "./pokemon.scss";
+@import "./btn.scss";
+@import "./helpers.scss";
+
+body {
+    font-family: "Sedgwick Ave Display", serif;
+    color: $color_white;
+    background: $color_background;
+}
+
+.container {
+    padding: 20px;
+    margin: auto;
+}
+
+.listCharacters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 20px;
+
+
+    &_item {
+        margin: 0 5px 10px;
+        position: relative;
+        flex-basis: 40%;
+        height: 150px;
+
+        $num-colors: 50;
+        @for $i from 0 to $num-colors {
+            &:nth-child(#{$i}),
+            &_item-title {
+                @include random-bgr();
+            }
+        }
+
+        &-title {
+            @include reset-btn();
+            background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: opacity 1s;
+            &:hover {
+                opacity: 0;
+            }
+        }
+
+        &-img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 80%;
+    }
+
+    .listCharacters {
+        
+        &_item {
+            flex-basis: 20%;
+
+            &-title {
+                font-size: 32px;
+            }
+        }
+    }
+}

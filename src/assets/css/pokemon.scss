@@ -1,0 +1,25 @@
+.pokemon {
+    font-family: "Times New Roman", serif;
+    max-width: 80%;
+    text-transform: capitalize;
+    margin: auto;
+    &_stat {
+        &-text {
+            & + & {
+                margin-top: 5px;
+                text-align: justify;
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        &_stat {
+            min-height: 260px;
+        }
+        &{
+            margin: inherit;
+        }
+    }
+
+   
+}

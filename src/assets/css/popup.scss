@@ -1,0 +1,114 @@
+.popup {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 20px;
+    left: 0;
+
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    
+
+    &_content {
+        position: relative;
+        width: 80%;
+        height: 80%;
+        min-height: 300px;
+        color: black;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 2rem 4rem rgb(182, 255, 13);
+        border-radius: 3px;
+        padding: 30px 20px 20px;
+
+        &-close {
+            @include reset-btn();
+            background-image: url("../img/close.png");
+            background-size: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 15px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            height: 20px;
+            width: 20px;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+
+        &-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+
+            .btn + .btn {
+                margin: 0 0 0 10px;
+            }
+        }
+
+        &-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            @include text-overflow();
+        }
+
+        &-img {
+            max-height: 200px;
+            height: 20vh;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+    }
+
+    @media (min-width: 1024px) {
+        top: 40px;
+
+        &_content {
+            width: 55%;
+            height: 50%;
+
+            &-wrap {
+                display: grid;
+                grid-template-areas:
+                    "image buttons"
+                    "image  text"
+                    "image  text";
+                grid-template-columns: 250px 1fr;
+            }
+
+            &-title {
+                font-size: 32px;
+            }
+
+            &-img {
+                grid-area: image;
+                margin-bottom: 0;
+            }
+
+            &-btns {
+                grid-area: buttons;
+                justify-content: flex-start;
+                margin-bottom: 16px;
+
+                .btn + .btn {
+                    margin: 0 0 0 14px;
+                }
+            }
+
+            &-section {
+                grid-area: text;
+            }
+        }
+    }
+}
